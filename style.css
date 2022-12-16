@@ -56,20 +56,50 @@ a::after {
     bottom: -10px;
     height: 3px;
     width: 0;
-    background-color: #3EC70B;
+    background-color: #23bd58;
     border-radius: 3px;
     transition: .3s;
 }
 
 a:hover,
 a:focus {
-    color: #fff;
     outline: none;
+    color: #5adb87;
 }
 
 nav ul li a:hover::after,
 nav ul li a:focus::after {
     width: 100%;
+}
+
+span {
+    background: #fff;
+    width: 25px;
+    height: 3px;
+    position: absolute;
+    right: 2rem;
+    border-radius: 3px;
+    display: none;
+}
+
+span::before {
+    content: '';
+    position: absolute;
+    background: #fff;
+    width: 25px;
+    height: 3px;
+    border-radius: 3px;
+    transform: translateY(-10px);
+}
+
+span::after {
+    content: '';
+    position: absolute;
+    background: #fff;
+    width: 25px;
+    height: 3px;
+    border-radius: 3px;
+    transform: translateY(10px);
 }
 
 main {
@@ -87,7 +117,7 @@ main {
 
 p {
     color: #fff;
-    letter-spacing: 4px;
+    letter-spacing: 2px;
     width: 80vw;
 }
 
@@ -105,12 +135,14 @@ button {
     font-size: 15px;
     font-weight: 500;
     letter-spacing: 2px;
-    transition: .1s;
+    transition: .3s;
 }
 
 button:hover,
 button:focus {
-    transform: scale(1.1);
+    transform: scale(1.05);
+    background-color: #23bd58;
+    color: #fff;
 }
 
 footer {
@@ -120,7 +152,64 @@ footer {
     left: 10%;
 }
 
-span a{
-    position: relative;
-    bottom: 20px;
+@media screen and (max-width: 576px) {
+    header span {
+        display: block;
+        z-index: 2;
+    }
+
+    span:hover {
+        cursor: pointer;
+    }
+
+    nav {
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 1;
+        height: 100%;
+        width: 200px;
+        background-color: #23bd58;
+        display: none;
+        transform-origin: right;
+        animation: navMenu 0.5s ease forwards;
+    }
+
+    @keyframes navMenu {
+        0% {
+            transform: scaleX(0);
+        }
+
+        100% {
+            transform: scaleX(1);
+        }
+    }
+
+    nav ul {
+        position: absolute;
+        height: 250px;
+        width: 100%;
+        top: 5rem;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-evenly;
+    }
+
+    nav ul li {
+        width: 100%;
+        border-bottom: 2px solid #ccc;
+        padding: 1.3rem;
+    }
+
+    nav ul li a:hover,
+    nav ul li a:focus {
+        color: #fff;
+    }
+
+    #container:hover nav {
+        display: block;
+    }
+
 }
